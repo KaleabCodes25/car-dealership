@@ -3,20 +3,19 @@ package com.pluralsight;
 import java.util.Scanner;
 
 public class UserInterface {
+    private Dealership dealership;
 
-
-    public UserInterface() {
-
+    public UserInterface(Dealership dealership) {
+        this.dealership = dealership;
     }
 
-
-    public void display(){
+    public void display() {
         init();
 
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
-        while (running){
+        while (running) {
             displayMenu();
             System.out.println("Choose an option: ");
             int command = scanner.nextInt();
@@ -36,7 +35,8 @@ public class UserInterface {
                     System.out.println("Thank you for your business!");
                     running = false;
                 }
-                default -> {System.out.println("Enter the required command!!");
+                default -> {
+                    System.out.println("Enter the required command!!");
                 }
 
 
@@ -46,7 +46,8 @@ public class UserInterface {
         }
 
     }
-    public void displayMenu(){
+
+    public void displayMenu() {
         System.out.println("\n==========DEALERSHIP MENU===========");
         System.out.println("1 - Find vehicles by price range");
         System.out.println("2 - Find vehicles by make/model");
@@ -62,44 +63,54 @@ public class UserInterface {
     }
 
 
-    private void init(){
+    private Dealership init() {
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+        return this.dealership = dealershipFileManager.getDealership();
 
     }
 
 
-    public void processGetByPriceRequest(){
+    public void processGetByPriceRequest() {
 
 
     }
-    public void processGetByMakeModelRequest(){
+
+    public void processGetByMakeModelRequest() {
 
 
     }
-    public void processGetByYearRequest(){
+
+    public void processGetByYearRequest() {
 
 
     }
-    public void processGetByColorRequest(){
+
+    public void processGetByColorRequest() {
 
 
     }
-    public void processGetByMileageRequest(){
+
+    public void processGetByMileageRequest() {
 
 
     }
-    public void processGetByVehicleTypeRequest(){
+
+    public void processGetByVehicleTypeRequest() {
 
 
     }
-    public void processGetAllVehicleRequest(){
+
+    public void processGetAllVehicleRequest() {
 
 
     }
-    public void processAddVehicleRequest(){
+
+    public void processAddVehicleRequest() {
 
 
     }
-    public void processRemoveVehicleRequest(){
+
+    public void processRemoveVehicleRequest() {
 
     }
 

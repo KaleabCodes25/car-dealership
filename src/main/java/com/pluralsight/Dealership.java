@@ -19,45 +19,52 @@ public class Dealership {
 
     }
 
-    public List<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max){
+    public List<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
 
-
-     return null;
-
-    }
-    public List<Vehicle> getVehiclesByMakeModel(String make, String model){
-
-
-    return null;
-    }
-
-    public List<Vehicle> getVehiclesByYear(int min, int max ){
 
         return null;
 
     }
-    public List<Vehicle> getVehiclesByColor(String color){
+
+    public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
+
 
         return null;
     }
-    public List<Vehicle> getVehiclesByMileage(int min, int max){
 
-        return null;
-
-    }
-    public List<Vehicle> getVehiclesByType(String type){
+    public List<Vehicle> getVehiclesByYear(int min, int max) {
 
         return null;
 
     }
-    public List<Vehicle> getAllVehicles(){
+
+    public List<Vehicle> getVehiclesByColor(String color) {
 
         return null;
     }
-    public void addVehicle(Vehicle vehicle){
+
+    public List<Vehicle> getVehiclesByMileage(int min, int max) {
+
+        return null;
 
     }
-    public void removeVehicle(Vehicle vehicle){
+
+    public List<Vehicle> getVehiclesByType(String type) {
+
+        return null;
+
+    }
+
+    public List<Vehicle> getAllVehicles() {
+
+        return null;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
 
 
     }
