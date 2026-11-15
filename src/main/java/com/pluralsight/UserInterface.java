@@ -17,8 +17,13 @@ public class UserInterface {
 
         while (running) {
             displayMenu();
-            System.out.print("Choose an option: ");
-            int command = scanner.nextInt();
+            int command = 0;
+            try {
+                System.out.print("Choose an option: ");
+                command = scanner.nextInt();
+            } catch (Exception e) {
+                System.err.println("Enter a number Please!!" + e.getMessage());
+            }
             scanner.nextLine();
 
             switch (command) {
