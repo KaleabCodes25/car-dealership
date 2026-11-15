@@ -72,7 +72,7 @@ public class UserInterface {
     }
     private void displayVehicles(List<Vehicle> list){
 
-        System.out.println("==========================================DEALERSHIP INVENTORY==========================================");
+        System.out.print("==========================================DEALERSHIP INVENTORY==========================================");
         System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n","#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price" );
 
         int count = 1;
@@ -142,6 +142,15 @@ public class UserInterface {
     }
 
     public void processGetByColorRequest() {
+        System.out.print("Enter the color: ");
+        String color = scanner.nextLine().trim();
+
+        List<Vehicle> colorList = dealership.getVehiclesByColor(color);
+        displayVehicles(colorList);
+
+        if(colorList.isEmpty()){
+            System.out.println("No vehicles match that color!!");
+        }
 
 
     }
