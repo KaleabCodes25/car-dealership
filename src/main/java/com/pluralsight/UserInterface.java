@@ -68,9 +68,11 @@ public class UserInterface {
         return this.dealership = dealershipFileManager.getDealership();
     }
     private void displayVehicles(List<Vehicle> list){
+
+        System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n","#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price" );
         int counter = 1;
         for (Vehicle vehicle : list ) {
-            System.out.printf("%-12d | %-12d | %-12d | %-12s | %-12s | %-12s | %-12s | %-12d | %-12f\n", counter,
+            System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f\n", counter,
                     vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel(),vehicle.getVehicleType(),vehicle.getColor(),vehicle.getOdometer(),vehicle.getPrice());
             counter++;
         }
