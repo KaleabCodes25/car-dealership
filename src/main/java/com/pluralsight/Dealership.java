@@ -3,7 +3,7 @@ package com.pluralsight;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Dealership {
     private String name;
@@ -44,8 +44,15 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByYear(int min, int max) {
+        List<Vehicle> yearList = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if(vehicle.getYear() >= min && vehicle.getYear() <= max){
+                yearList.add(vehicle);
+            }
 
-        return null;
+        }
+
+        return yearList;
 
     }
 

@@ -2,10 +2,8 @@ package com.pluralsight;
 
 import javax.swing.*;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.math.BigDecimal;
-import java.text.Bidi;
 
 public class DealershipFileManager {
     public Dealership getDealership(){

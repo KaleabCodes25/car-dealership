@@ -93,7 +93,7 @@ public class UserInterface {
             System.out.print("Enter the maximum price : ");
             max = new BigDecimal(scanner.nextLine().trim());
         } catch (Exception e) {
-            System.err.println("Enter number values only: " + e.getMessage());
+            System.err.println("Enter number values only!! " + e.getMessage());
             return;
         }
 
@@ -105,26 +105,39 @@ public class UserInterface {
     }
 
     public void processGetByMakeModelRequest() {
-        String make = null;
-        String model = null;
-        try {
-            System.out.print("Enter the Make: ");
-            make = scanner.nextLine().trim();
-            System.out.print("Enter the Model: ");
-            model = scanner.nextLine().trim();
-        } catch (Exception e) {
-            System.out.println("Enter correct M/M" + e.getMessage());
-        }
+
+        System.out.print("Enter the Make: ");
+        String make = scanner.nextLine().trim();
+        System.out.print("Enter the Model: ");
+        String model = scanner.nextLine().trim();
 
         List<Vehicle> mmlist = dealership.getVehiclesByMakeModel(make,model);
         displayVehicles(mmlist);
         if(mmlist.isEmpty()){
-            System.out.println("No vehicles that much the provided M/M");
+            System.out.println("No vehicles that much the provided M/M!!");
         }
     }
 
     public void processGetByYearRequest() {
+        int min = 0;
+        int max = 0;
+        try {
+            System.out.print("Enter the minimum year: ");
+            min = scanner.nextInt();
+            System.out.print("Enter the maximum year: ");
+            max = scanner.nextInt();
+        } catch (Exception e) {
+            System.err.println("Enter a valid number!! " + e.getMessage());
+            scanner.nextLine();
+            return;
+        }
 
+        List<Vehicle> yearList = dealership.getVehiclesByYear(min,max);
+        displayVehicles(yearList);
+
+        if(yearList.isEmpty()){
+            System.out.println("No vehicles that match the provided year range!!");
+        }
 
     }
 
