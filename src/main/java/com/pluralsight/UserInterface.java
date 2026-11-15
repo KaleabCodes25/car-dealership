@@ -66,9 +66,9 @@ public class UserInterface {
 
     }
 
-    private Dealership init() {
+    private void init() {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        return this.dealership = dealershipFileManager.getDealership();
+        this.dealership = dealershipFileManager.getDealership();
     }
     private void displayVehicles(List<Vehicle> list){
 
