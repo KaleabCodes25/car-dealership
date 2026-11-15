@@ -188,17 +188,52 @@ public class UserInterface {
         if(typeList.isEmpty()){
             System.out.println("No vehicles that match the type!!");
         }
-
     }
-
     public void processGetAllVehicleRequest() {
 
         displayVehicles(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {
+        int vin = 0;
+        int year = 0;
+        String make = null;
+        String model = null;
+        String vehicleType = null;
+        String color = null;
+        int odometer = 0;
+        BigDecimal price = null;
+        try {
+            System.out.print("Enter the vin: ");
+            vin = Integer.parseInt(scanner.nextLine().trim());
 
+            System.out.print("Enter the year: ");
+            year = Integer.parseInt(scanner.nextLine().trim());
 
+            System.out.print("Enter the make: ");
+            make = scanner.nextLine();
+
+            System.out.print("Enter the model: ");
+            model = scanner.nextLine();
+
+            System.out.print("Enter the vehicle type: ");
+            vehicleType = scanner.nextLine();
+
+            System.out.print("Enter the color: ");
+            color = scanner.nextLine();
+
+            System.out.print("Enter the odometer: ");
+            odometer = Integer.parseInt(scanner.nextLine().trim());
+
+            System.out.print("Enter the price: ");
+            price = new BigDecimal(scanner.nextLine().trim());
+        } catch (Exception e) {
+            System.err.println("Enter required inputs!! " + e.getMessage());
+            System.out.println();
+            return;
+        }
+
+        dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
     }
 
     public void processRemoveVehicleRequest() {
