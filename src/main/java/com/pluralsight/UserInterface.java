@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -175,11 +176,18 @@ public class UserInterface {
         if(mileList.isEmpty()){
             System.out.println("No vehicles found with that mile range!!");
         }
-
     }
-
     public void processGetByVehicleTypeRequest() {
 
+        System.out.print("Enter vehicle type: ");
+        String type = scanner.nextLine();
+
+        List<Vehicle> typeList = dealership.getVehiclesByType(type);
+        displayVehicles(typeList);
+
+        if(typeList.isEmpty()){
+            System.out.println("No vehicles that match the type!!");
+        }
 
     }
 
