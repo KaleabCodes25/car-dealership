@@ -1,14 +1,12 @@
 package com.pluralsight;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
 
-    public UserInterface(Dealership dealership) {
-        this.dealership = dealership;
+    public UserInterface() {
     }
 
     public void display() {
@@ -19,7 +17,7 @@ public class UserInterface {
 
         while (running) {
             displayMenu();
-            System.out.println("Choose an option: ");
+            System.out.print("Choose an option: ");
             int command = scanner.nextInt();
             scanner.nextLine();
 
@@ -68,11 +66,13 @@ public class UserInterface {
     private Dealership init() {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         return this.dealership = dealershipFileManager.getDealership();
-
     }
-    private void displayVehicles(List<Vehicle> vehicles){
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle);
+    private void displayVehicles(List<Vehicle> list){
+        int counter = 1;
+        for (Vehicle vehicle : list ) {
+            System.out.printf("%-12d | %-12d | %-12d | %-12s | %-12s | %-12s | %-12s | %-12d | %-12f\n", counter,
+                    vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel(),vehicle.getVehicleType(),vehicle.getColor(),vehicle.getOdometer(),vehicle.getPrice());
+            counter++;
         }
 
     }
@@ -109,10 +109,12 @@ public class UserInterface {
     }
 
     public void processGetAllVehicleRequest() {
+
         displayVehicles(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {
+
 
 
     }
