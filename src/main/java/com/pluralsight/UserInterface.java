@@ -72,30 +72,37 @@ public class UserInterface {
     }
     private void displayVehicles(List<Vehicle> list){
 
-        System.out.println("============================================DEALERSHIP INVENTORY=============================================");
+        System.out.println("==========================================DEALERSHIP INVENTORY==========================================");
         System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n","#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price" );
-        int counter = 1;
-        for (Vehicle vehicle : list ) {
-            System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f\n", counter,
-                    vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel(),vehicle.getVehicleType(),vehicle.getColor(),vehicle.getOdometer(),vehicle.getPrice());
-            counter++;
+
+        int count = 1;
+        for (Vehicle v : list) {
+            System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n", count,
+                    v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+            count++;
         }
 
     }
 
 
     public void processGetByPriceRequest() {
-        System.out.print("Enter the minimum price of the car: ");
+        System.out.print("Enter the minimum price : ");
         BigDecimal min = new BigDecimal(scanner.nextLine().trim());
-        System.out.print("Enter the maximum price of the car: ");
+        System.out.print("Enter the maximum price : ");
         BigDecimal max = new BigDecimal(scanner.nextLine().trim());
+        System.out.println();
+
          dealership.getVehiclesByPrice(min,max);
 
     }
 
     public void processGetByMakeModelRequest() {
+        System.out.print("Enter the Make: ");
+        String make = scanner.nextLine().trim();
+        System.out.print("Enter the Model: ");
+        String model = scanner.nextLine().trim();
 
-
+        dealership.getVehiclesByMakeModel(make,model);
     }
 
     public void processGetByYearRequest() {
