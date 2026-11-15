@@ -3,7 +3,7 @@ package com.pluralsight;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
+import java.util.Scanner;
 
 public class Dealership {
     private String name;
@@ -20,9 +20,26 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
+        List<Vehicle> list = new ArrayList<>();
+        boolean found = false;
+        int count = 1;
+        System.out.println("=================================================RESULTS=============================================");
 
+        for (Vehicle vehicle : inventory) {
+            if(vehicle.getPrice().compareTo(min) >= 0 && vehicle.getPrice().compareTo(max) <= 0 ){
+                System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n", count,
+                        vehicle.getVin(),vehicle.getYear(),vehicle.getMake(),vehicle.getModel(),vehicle.getVehicleType(),vehicle.getColor(),vehicle.getOdometer(),vehicle.getPrice());
+                count++;
+                found = true;
+                list.add(vehicle);
 
-        return null;
+            }
+        }
+        if(!found){
+            System.out.println("No vehicles found that match the price range");
+        }
+
+        return list;
 
     }
 

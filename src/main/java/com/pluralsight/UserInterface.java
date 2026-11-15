@@ -1,9 +1,12 @@
 package com.pluralsight;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
+    private final Scanner scanner = new Scanner(System.in);
+
     private Dealership dealership;
 
     public UserInterface() {
@@ -69,6 +72,7 @@ public class UserInterface {
     }
     private void displayVehicles(List<Vehicle> list){
 
+        System.out.println("============================================DEALERSHIP INVENTORY=============================================");
         System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n","#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price" );
         int counter = 1;
         for (Vehicle vehicle : list ) {
@@ -81,7 +85,11 @@ public class UserInterface {
 
 
     public void processGetByPriceRequest() {
-
+        System.out.print("Enter the minimum price of the car: ");
+        BigDecimal min = new BigDecimal(scanner.nextLine().trim());
+        System.out.print("Enter the maximum price of the car: ");
+        BigDecimal max = new BigDecimal(scanner.nextLine().trim());
+         dealership.getVehiclesByPrice(min,max);
 
     }
 
