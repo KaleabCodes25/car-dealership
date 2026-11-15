@@ -20,45 +20,27 @@ public class Dealership {
     }
 
     public List<Vehicle> getVehiclesByPrice(BigDecimal min, BigDecimal max) {
-        List<Vehicle> list = new ArrayList<>();
-        System.out.println("================================================RESULTS==============================================");
-        int count = 1;
 
+        List<Vehicle> priceList = new ArrayList<>();
         for (Vehicle v : inventory) {
             if(v.getPrice().compareTo(min) >= 0 && v.getPrice().compareTo(max) <= 0 ){
-                System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n", count,
-                        v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                count++;
-                list.add(v);
+                priceList.add(v);
             }
         }
 
-        if(list.isEmpty()){
-            System.out.println("No vehicles found that match the price range!!");
-        }
-
-        return list;
+        return priceList;
 
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
-        List<Vehicle> list = new ArrayList<>();
-        int count = 1;
+        List<Vehicle> mmList = new ArrayList<>();
         for (Vehicle v : inventory) {
             if (v.getMake().equalsIgnoreCase(make) && v.getModel().equalsIgnoreCase(model)) {
-                System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n", count,
-                        v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
-                count++;
-                list.add(v);
+                mmList.add(v);
             }
-
         }
-       ;
 
-        if(list.isEmpty()){
-            System.out.println("No vehicles that match make and model!!");
-        }
-        return list;
+        return mmList;
     }
 
     public List<Vehicle> getVehiclesByYear(int min, int max) {

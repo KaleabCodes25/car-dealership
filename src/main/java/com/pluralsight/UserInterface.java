@@ -84,25 +84,43 @@ public class UserInterface {
 
     }
 
-
     public void processGetByPriceRequest() {
-        System.out.print("Enter the minimum price : ");
-        BigDecimal min = new BigDecimal(scanner.nextLine().trim());
-        System.out.print("Enter the maximum price : ");
-        BigDecimal max = new BigDecimal(scanner.nextLine().trim());
-        System.out.println();
+        BigDecimal min = null;
+        BigDecimal max = null;
+        try {
+            System.out.print("Enter the minimum price : ");
+            min = new BigDecimal(scanner.nextLine().trim());
+            System.out.print("Enter the maximum price : ");
+            max = new BigDecimal(scanner.nextLine().trim());
+        } catch (Exception e) {
+            System.err.println("Enter number values only: " + e.getMessage());
+            return;
+        }
 
-         dealership.getVehiclesByPrice(min,max);
-
+        List<Vehicle> priceList = dealership.getVehiclesByPrice(min,max);
+        displayVehicles(priceList);
+        if(priceList.isEmpty()){
+            System.out.println("No vehicles that match provided price range!!");
+        }
     }
 
     public void processGetByMakeModelRequest() {
-        System.out.print("Enter the Make: ");
-        String make = scanner.nextLine().trim();
-        System.out.print("Enter the Model: ");
-        String model = scanner.nextLine().trim();
+        String make = null;
+        String model = null;
+        try {
+            System.out.print("Enter the Make: ");
+            make = scanner.nextLine().trim();
+            System.out.print("Enter the Model: ");
+            model = scanner.nextLine().trim();
+        } catch (Exception e) {
+            System.out.println("Enter correct M/M" + e.getMessage());
+        }
 
-        dealership.getVehiclesByMakeModel(make,model);
+        List<Vehicle> mmlist = dealership.getVehiclesByMakeModel(make,model);
+        displayVehicles(mmlist);
+        if(mmlist.isEmpty()){
+            System.out.println("No vehicles that much the provided M/M");
+        }
     }
 
     public void processGetByYearRequest() {
