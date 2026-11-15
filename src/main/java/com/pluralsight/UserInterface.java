@@ -57,13 +57,9 @@ public class UserInterface {
                 default -> {
                     System.out.println("Enter the required command!!");
                 }
-
-
             }
 
-
         }
-
     }
 
     private void init() {
@@ -73,17 +69,16 @@ public class UserInterface {
     private void displayVehicles(List<Vehicle> list){
 
         System.out.print("==========================================DEALERSHIP INVENTORY==========================================");
-        System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n","#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price" );
-
+        System.out.println();
+        System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n" ,"#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price");
         int count = 1;
-        for (Vehicle v : list) {
+        for (Vehicle vehicle : list) {
             System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n", count,
-                    v.getVin(), v.getYear(), v.getMake(), v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice());
+                    vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(), vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
             count++;
         }
 
     }
-
     public void processGetByPriceRequest() {
         BigDecimal min = null;
         BigDecimal max = null;
@@ -151,7 +146,6 @@ public class UserInterface {
         if(colorList.isEmpty()){
             System.out.println("No vehicles match that color!!");
         }
-
 
     }
 

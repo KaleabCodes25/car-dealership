@@ -106,14 +106,6 @@ public class Dealership {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    /*public void displayFormat(List<Vehicle> list){
-        int count = 1;
-        for (Vehicle v : inventory) {
-            System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n",count,
-                    v.getVin(),v.getYear(),v.getMake(),v.getModel(),v.getVehicleType(),v.getColor(),v.getOdometer(),v.getPrice());
-            count++;
-        }
 
 
-    }*/
 }
