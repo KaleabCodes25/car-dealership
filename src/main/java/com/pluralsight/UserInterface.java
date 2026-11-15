@@ -66,11 +66,11 @@ public class UserInterface {
         DealershipFileManager dealershipFileManager = new DealershipFileManager();
         this.dealership = dealershipFileManager.getDealership();
     }
-    private void displayVehicles(List<Vehicle> list){
 
-        System.out.print("==========================================DEALERSHIP INVENTORY==========================================");
-        System.out.println();
-        System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n" ,"#","Vin","Year","Make","Model","Vehicle Type","Color","Odometer","Price");
+    private void displayVehicles(List<Vehicle> list) {
+
+        System.out.print("==========================================DEALERSHIP INVENTORY==========================================\n");
+        System.out.printf("%-4s | %-8s | %-6s | %-12s | %-12s | %-10s | %-10s | %-10s | %-12s\n", "#", "Vin", "Year", "Make", "Model", "Vehicle Type", "Color", "Odometer", "Price");
         int count = 1;
         for (Vehicle vehicle : list) {
             System.out.printf("%-4d | %-8d | %-6d | %-12s | %-12s | %-12s | %-10s | %-10d | %-12.2f%n", count,
@@ -79,6 +79,7 @@ public class UserInterface {
         }
 
     }
+
     public void processGetByPriceRequest() {
         BigDecimal min = null;
         BigDecimal max = null;
@@ -89,12 +90,13 @@ public class UserInterface {
             max = new BigDecimal(scanner.nextLine().trim());
         } catch (Exception e) {
             System.err.println("Enter number values only!! " + e.getMessage());
+            System.out.println();
             return;
         }
 
-        List<Vehicle> priceList = dealership.getVehiclesByPrice(min,max);
+        List<Vehicle> priceList = dealership.getVehiclesByPrice(min, max);
         displayVehicles(priceList);
-        if(priceList.isEmpty()){
+        if (priceList.isEmpty()) {
             System.out.println("No vehicles that match provided price range!!");
         }
     }
@@ -106,9 +108,9 @@ public class UserInterface {
         System.out.print("Enter the Model: ");
         String model = scanner.nextLine().trim();
 
-        List<Vehicle> mmlist = dealership.getVehiclesByMakeModel(make,model);
+        List<Vehicle> mmlist = dealership.getVehiclesByMakeModel(make, model);
         displayVehicles(mmlist);
-        if(mmlist.isEmpty()){
+        if (mmlist.isEmpty()) {
             System.out.println("No vehicles that much the provided M/M!!");
         }
     }
@@ -119,18 +121,20 @@ public class UserInterface {
         try {
             System.out.print("Enter the minimum year: ");
             min = scanner.nextInt();
+
             System.out.print("Enter the maximum year: ");
             max = scanner.nextInt();
+
         } catch (Exception e) {
             System.err.println("Enter a valid number!! " + e.getMessage());
             scanner.nextLine();
             return;
         }
 
-        List<Vehicle> yearList = dealership.getVehiclesByYear(min,max);
+        List<Vehicle> yearList = dealership.getVehiclesByYear(min, max);
         displayVehicles(yearList);
 
-        if(yearList.isEmpty()){
+        if (yearList.isEmpty()) {
             System.out.println("No vehicles that match the provided year range!!");
         }
 
@@ -143,14 +147,34 @@ public class UserInterface {
         List<Vehicle> colorList = dealership.getVehiclesByColor(color);
         displayVehicles(colorList);
 
-        if(colorList.isEmpty()){
+        if (colorList.isEmpty()) {
             System.out.println("No vehicles match that color!!");
         }
 
     }
 
     public void processGetByMileageRequest() {
+        int min = 0;
+        int max = 0;
+        try {
+            System.out.print("Enter the minimum miles: ");
+            min = scanner.nextInt();
 
+            System.out.print("Enter the maximum miles: ");
+            max = scanner.nextInt();
+
+        } catch (Exception e) {
+            System.err.println("Enter a valid number!! " + e.getMessage());
+            scanner.nextLine();
+            return;
+        }
+
+        List<Vehicle> mileList = dealership.getVehiclesByMileage(min, max);
+        displayVehicles(mileList);
+
+        if(mileList.isEmpty()){
+            System.out.println("No vehicles found with that mile range!!");
+        }
 
     }
 
@@ -165,7 +189,6 @@ public class UserInterface {
     }
 
     public void processAddVehicleRequest() {
-
 
 
     }
