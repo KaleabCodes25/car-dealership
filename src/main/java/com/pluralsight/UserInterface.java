@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class UserInterface {
     private final Scanner scanner = new Scanner(System.in);
 
+
     private Dealership dealership;
 
     public UserInterface() {
@@ -16,7 +17,6 @@ public class UserInterface {
     public void display() {
         init();
 
-        Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
         while (running) {
@@ -35,11 +35,12 @@ public class UserInterface {
             int command = 0;
             try {
                 System.out.print("Choose an option: ");
-                command = scanner.nextInt();
+                command = Integer.parseInt(scanner.nextLine());
             } catch (Exception e) {
                 System.err.println("Enter a number Please!!" + e.getMessage());
+                scanner.nextLine();
             }
-            scanner.nextLine();
+            System.out.println();
 
             switch (command) {
                 case 1 -> processGetByPriceRequest();
@@ -64,8 +65,8 @@ public class UserInterface {
     }
 
     private void init() {
-        DealershipFileManager dealershipFileManager = new DealershipFileManager();
-        this.dealership = dealershipFileManager.getDealership();
+        DealershipFileManager fileManager = new DealershipFileManager();
+        this.dealership = fileManager.getDealership();
     }
 
     private void displayVehicles(List<Vehicle> list) {
@@ -121,10 +122,10 @@ public class UserInterface {
         int max = 0;
         try {
             System.out.print("Enter the minimum year: ");
-            min = scanner.nextInt();
+            min = Integer.parseInt(scanner.nextLine());
 
             System.out.print("Enter the maximum year: ");
-            max = scanner.nextInt();
+            max = Integer.parseInt(scanner.nextLine());
 
         } catch (Exception e) {
             System.err.println("Enter a valid number!! " + e.getMessage());
@@ -159,10 +160,10 @@ public class UserInterface {
         int max = 0;
         try {
             System.out.print("Enter the minimum miles: ");
-            min = scanner.nextInt();
+            min = Integer.parseInt(scanner.nextLine());
 
             System.out.print("Enter the maximum miles: ");
-            max = scanner.nextInt();
+            max = Integer.parseInt(scanner.nextLine());
 
         } catch (Exception e) {
             System.err.println("Enter a valid number!! " + e.getMessage());
@@ -228,15 +229,37 @@ public class UserInterface {
             System.out.print("Enter the price: ");
             price = new BigDecimal(scanner.nextLine().trim());
         } catch (Exception e) {
-            System.err.println("Enter required inputs!! " + e.getMessage());
+            System.err.println("Enter the required inputs only!! " + e.getMessage());
             System.out.println();
             return;
         }
 
         dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
+        System.out.println("Vehicle successfully added to inventory!!");
+
+        DealershipFileManager fileManager = new DealershipFileManager();
+        fileManager.saveDealership(dealership);
+
+
     }
 
     public void processRemoveVehicleRequest() {
+
+        System.out.print("Enter the car(vin) to remove: ");
+        int vin = Integer.parseInt(scanner.nextLine());
+        for (Vehicle vehicle :dealership.getAllVehicles() ) {
+            if(vehicle.getVin() == vin){
+                dealership.removeVehicle(vehicle);
+
+                DealershipFileManager fileManager = new DealershipFileManager();
+                fileManager.saveDealership(dealership);
+
+                System.out.println("Vehicle is successfully removed!!");
+                return;
+            }
+
+        }
+        System.out.println("No vehicle found with the provided VIN!!");
 
     }
 
