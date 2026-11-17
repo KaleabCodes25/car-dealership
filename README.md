@@ -84,9 +84,9 @@ can browse available vehicles, search for specific vehicles with unique attribut
      Optional GIF: LICEcap (free, Windows and Mac, <https://www.cockos.com/licecap/>) records a region of the
      screen straight to a .gif. Keep it under 10 seconds and under 10 MB, save it into `images`. -->
 
-![Main menu](images/Feature gif 2026-11-17 045740.gif)
+![Main menu]!(images/Feature gif 2026-11-17 045740.gif)
 
-![One feature in action](images/Menu gif 2026-11-17 045603.gif)
+![One feature in action]!(images/Menu gif 2026-11-17 045603.gif)
 
 ## A piece of code I am proud of
 
