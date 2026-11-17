@@ -1,4 +1,5 @@
-# Project Title
+# Car Dealership
+An application that tracks cars in a dealership.
 
 <!-- HOW TO USE THIS TEMPLATE
      Save it as README.md at the root of your project, next to pom.xml. Replace every comment like this one
@@ -10,17 +11,11 @@
      Example: A console app that keeps a store's inventory in a csv file and lets a clerk search it. -->
 
 ## Description of the Project
+- A java console-based software application that allows users to manage a dealership's vehicle inventory. Users 
+can browse available vehicles, search for specific vehicles with unique attributes, add a new vehicle, remove and other features.
 
 <!-- Three to five sentences. What the application does, who uses it, what problem it solves.
      Write it for someone who has never seen the workbook: a recruiter, a classmate, you in six months. -->
-
-## Class Diagram
-
-<!-- OPTIONAL. Only when the project asks for one (Capstone 2 onward). Export the diagram as a PNG into the
-     images folder and keep the line below. If your project has no class diagram, delete this whole section,
-     heading included. -->
-
-![Class Diagram](images/class-diagram.png)
 
 ## Features
 
@@ -31,18 +26,16 @@
      - Shows every product in the store
      - Searches products by name (bonus) -->
 
--
--
--
+- find vehicles by price
+- find vehicles by make/model
+- find vehicles by year
+- find vehicles by color
+- find vehicles by mileage
+- find vehicles by type
+- list all available vehicles
+- add a vehicle
+- remove a vehicle
 
-## User Stories
-
-<!-- The stories you worked from, one per bullet, in the format you learned in Workbook 3b:
-     As a [type of user], I want [some goal] so that [some reason].
-     Same text as the cards on your GitHub project board. -->
-
-- As a ..., I want ..., so that ...
-- As a ..., I want ..., so that ...
 
 ## Setup
 
@@ -68,7 +61,7 @@
      - `inventory.csv` sits at the project root, next to `pom.xml`. The program reads it at start.
      - `logs.txt` is created by the program at the project root on the first run. -->
 
--
+- `inventory.csv` sits at the project root, next to `pom.xml`. The program reads it at start.
 
 ## Technologies Used
 
@@ -91,9 +84,9 @@
      Optional GIF: LICEcap (free, Windows and Mac, <https://www.cockos.com/licecap/>) records a region of the
      screen straight to a .gif. Keep it under 10 seconds and under 10 MB, save it into `images`. -->
 
-![Main menu](images/menu.png)
+![Main menu](images/Feature gif 2026-11-17 045740.gif)
 
-![One feature in action](images/feature.png)
+![One feature in action](images/Menu gif 2026-11-17 045603.gif)
 
 ## A piece of code I am proud of
 
@@ -103,30 +96,54 @@
 
 ```java
 
+Dealership dealership = null;
+while ((line = reader.readLine()) != null){
+    String[] tokens = line.split("\\|");
+
+    if(dealership == null){
+        dealership = new Dealership(tokens[0], tokens[1],tokens[2]);
+    }else {
+        int vin = Integer.parseInt(tokens[0]);
+        int year = Integer.parseInt(tokens[1]);
+        String make = tokens[2];
+        String model = tokens[3];
+        String vehicleType = tokens[4];
+        String color = tokens[5];
+        int odometer = Integer.parseInt(tokens[6]);
+        BigDecimal price = new BigDecimal(tokens[7]);
+
+        dealership.addVehicle( new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));}
+
+}
+    reader.close();
 ```
+I chose this code because it was tricky to figure out how to parse and store the values in the correct fields. 
+The loop goes through the "csv.file", line. Split, splits the values, and then we assign each value to the correct field.
+
 
 ## Future Work
 
 <!-- What you would add or fix next, one bullet each. Unfinished bonuses belong here. -->
 
--
--
+- modify the UserInterface with colors and appropriate graphics.
+- add a table for the menu
+- handling exceptions better without exiting the methods.
 
 ## Resources
 
 <!-- What helped you: the workbook, the week's hub pages, a tutorial, a documentation page. Real links. -->
 
 - Java YearUp Fall 2026 hub: <https://raymaroun.github.io/yearup-java-fall2026/>
--
+
 
 ## Author
 
 <!-- Your name and, if you like, your GitHub profile link. For a team workshop, one line per person with what each one built. -->
 
-- **Your Name**
+- Kaleab Tsegaye
 
 ## Thanks
 
 <!-- Optional. The people who helped: the instructor, a classmate who debugged with you, a mentor. -->
 
-- Thank you to ... for ...
+- Thank you to Raymond Maroun for guidance and support.
