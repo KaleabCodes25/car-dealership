@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
-
+// Vehicle fields
 public class Vehicle {
     private int vin;
     private int year;
@@ -11,7 +11,7 @@ public class Vehicle {
     private String color;
     private int odometer;
     private BigDecimal price;
-
+// Constructor
     public Vehicle(int vin, int year, String make, String model, String vehicleType, String color, int odometer, BigDecimal price) {
         this.vin = vin;
         this.year = year;

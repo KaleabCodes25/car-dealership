@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,7 +67,7 @@ public class UserInterface {
         DealershipFileManager fileManager = new DealershipFileManager();
         this.dealership = fileManager.getDealership();
     }
-
+    // a method to display vehicles in a uniform format
     private void displayVehicles(List<Vehicle> list) {
 
         System.out.print("==========================================DEALERSHIP INVENTORY==========================================\n");
@@ -81,7 +80,7 @@ public class UserInterface {
         }
 
     }
-
+     // method that prompts the user for information on price range
     public void processGetByPriceRequest() {
         BigDecimal min = null;
         BigDecimal max = null;
@@ -102,7 +101,7 @@ public class UserInterface {
             System.out.println("No vehicles that match provided price range!!");
         }
     }
-
+    // method that prompts user for information on make/model
     public void processGetByMakeModelRequest() {
 
         System.out.print("Enter the Make: ");
@@ -116,7 +115,7 @@ public class UserInterface {
             System.out.println("No vehicles that much the provided M/M!!");
         }
     }
-
+    // method that prompts user for information on year range
     public void processGetByYearRequest() {
         int min = 0;
         int max = 0;
@@ -141,7 +140,7 @@ public class UserInterface {
         }
 
     }
-
+    // method that prompts user for information on color
     public void processGetByColorRequest() {
         System.out.print("Enter the color: ");
         String color = scanner.nextLine().trim();
@@ -154,7 +153,7 @@ public class UserInterface {
         }
 
     }
-
+    // method that prompts user for information on mileage range
     public void processGetByMileageRequest() {
         int min = 0;
         int max = 0;
@@ -178,6 +177,7 @@ public class UserInterface {
             System.out.println("No vehicles found with that mile range!!");
         }
     }
+    // method that prompts user information on vehicle type
     public void processGetByVehicleTypeRequest() {
 
         System.out.print("Enter vehicle type: ");
@@ -190,11 +190,12 @@ public class UserInterface {
             System.out.println("No vehicles that match the type!!");
         }
     }
+    // method that allows user to view all vehicles
     public void processGetAllVehicleRequest() {
 
         displayVehicles(dealership.getAllVehicles());
     }
-
+    // method that lets user add a new vehicle
     public void processAddVehicleRequest() {
         int vin = 0;
         int year = 0;
@@ -242,7 +243,7 @@ public class UserInterface {
 
 
     }
-
+    // method that lets user remove a vehicle
     public void processRemoveVehicleRequest() {
 
         System.out.print("Enter the car(vin) to remove: ");

@@ -5,16 +5,17 @@ import java.io.*;
 import java.math.BigDecimal;
 
 public class DealershipFileManager {
+
     public Dealership getDealership(){
         String line;
         Dealership dealership = null;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("inventory.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader("inventory.csv")); //create a buffer reader to loop through the file.
 
             while ((line = reader.readLine()) != null){
                 String[] tokens = line.split("\\|");
 
-                if(dealership == null){
+                if(dealership == null){  // the first line in the csv file gets saved to the dealership.
                     dealership = new Dealership(tokens[0], tokens[1],tokens[2]);
                 }else {
                 int vin = Integer.parseInt(tokens[0]);
@@ -39,7 +40,7 @@ public class DealershipFileManager {
 
     public void saveDealership(Dealership dealership){
 
-        try {
+        try { // create buffer writer to save the dealership's information
             BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"));
             writer.write(dealership.getName() + "|" + dealership.getAddress() + "|" + dealership.getPhone());
             writer.newLine();
